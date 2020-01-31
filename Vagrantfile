@@ -4,13 +4,13 @@
 # Box / OS
 VAGRANT_BOX = 'ubuntu/trusty64'
 # Memorable name for your
-VM_NAME = 'interview-vm'
+VM_NAME = 'devops-vm'
 # VM User — 'vagrant' by default
 VM_USER = 'vagrant'
 # Username on your Mac
 MAC_USER = 'Interview'
 # Host folder to sync
-HOST_PATH = '/Users/' + MAC_USER + '/' + VM_NAME
+HOST_PATH = '/Users/' + MAC_USER 
 # Where to sync to on Guest — 'vagrant' is the default user name
 GUEST_PATH = '/home/' + VM_USER + '/' + VM_NAME
 # # VM Port — uncomment this to use NAT instead of DHCP
