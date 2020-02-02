@@ -7,7 +7,7 @@ if [ -e /etc/redhat-release ] ; then
   REDHAT_BASED=true
 fi
 
-TERRAFORM_VERSION="0.12.18"
+TERRAFORM_VERSION="0.12.20"
 PACKER_VERSION="1.2.4"
 # create new ssh key
 [[ ! -f /home/ubuntu/.ssh/mykey ]] \
@@ -26,18 +26,21 @@ fi
 # add docker privileges
 usermod -G docker ubuntu
 apt-get update
-apt-get install -y git
-# install pip
 
+# install git
+apt-get install -y git
+
+# install pip
 pip install -U pip && pip3 install -U pip
 if [[ $? == 127 ]]; then
     wget -q https://bootstrap.pypa.io/get-pip.py
     python get-pip.py
     python3 get-pip.py
 fi
+
 # install awscli and ebcli
-pip install -U awscli
-pip install -U awsebcli
+#pip install -U awscli
+#pip install -U awsebcli
 
 #terraform
 T_VERSION=$(/usr/local/bin/terraform -v | head -1 | cut -d ' ' -f 2 | tail -c +2)
@@ -57,16 +60,21 @@ P_RETVAL=$?
 && unzip -o packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin \
 && rm packer_${PACKER_VERSION}_linux_amd64.zip
 
-apt-get update
-sudo apt install software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
-apt-get upgrade -y
-apt-get autoremove -y
+#ansible
+#apt-get update
+#sudo apt install software-properties-common
+#sudo apt-add-repository --yes --update ppa:ansible/ansible
+#sudo apt install ansible
+
+#kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version --client
+
+apt-get upgrade -y
+apt-get autoremove -y
+
 
 # clean up
 if [ ! ${REDHAT_BASED} ] ; then

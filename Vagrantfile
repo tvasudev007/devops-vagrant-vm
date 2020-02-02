@@ -34,7 +34,6 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder HOST_PATH, GUEST_PATH
   # Disable default Vagrant folder, use a unique path per project
   config.vm.synced_folder '.', '/home/'+VM_USER+'', disabled: true
-  # Install Git, Node.js 6.x.x, Latest npm
   config.vm.provision :docker
   config.vm.provision "shell", path: "scripts/install.sh"
   # Use :ansible or :ansible_local to
