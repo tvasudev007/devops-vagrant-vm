@@ -50,9 +50,9 @@ To remove all traces of the guest machine from your system. It'll stop the guest
 ```
 vagrant destroy
 ```
-To remove a box that may have been installed on your computer during "vagrant up"
+To remove all boxes that may have been installed on your computer during "vagrant up"
 ```
-vagrant box remove
+vagrant box remove -f ubuntu/trusty64
 ```
 To forcifully destory all the instances
 ```
