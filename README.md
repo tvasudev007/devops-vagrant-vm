@@ -25,6 +25,11 @@ The following softwares should already be installed to setup vm using vagrant
 
 ### Getting started
 
+data can be synced between host & guest m/c by placing data in the following path:
+```
+HOST_PATH: /users/Interview & GUEST_PATH: / home/ devops-vm/ devops-vm
+```
+
 To start a box/vm, use the following
 ```
 vagrant up
